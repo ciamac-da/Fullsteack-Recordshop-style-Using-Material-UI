@@ -1,0 +1,19 @@
+{
+  "name": "record-shop-fullsteak",
+  "version": "29.2.32",
+  "description": "frontend und backend gleichzeitig laufen lassen",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "frontend": "npm --prefix record-shop-frontend start",
+    "backend": "cd record-shop-backend; PORT=3001 npx nodemon ./bin/www",
+    "dependencies": "git submodule init; git submodule update; cd record-shop-backend; git checkout task/05-mongoose-controllers-solution; yarn add nodemon; cd ..; yarn install; yarn install-all; yarn install",
+    "install-all": "( cd record-shop-backend; yarn install; ); ( cd record-shop-frontend; yarn install; );"
+  },
+  "author": "fbw9@dus",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "nodemon": "*",
+    "concurrently": "^5.1.0"
+  }
+}
