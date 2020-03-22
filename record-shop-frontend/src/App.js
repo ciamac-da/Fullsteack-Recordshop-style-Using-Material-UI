@@ -16,6 +16,8 @@ import TableRow from '@material-ui/core/TableRow';
 import AlbumIcon from '@material-ui/icons/Album';
 import PersonIcon from '@material-ui/icons/Person';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -46,7 +48,7 @@ function App() {
     <TableCell align="center" >
     <Link to="/admin/records/" className={classes.navjustify}> <AlbumIcon/>  Records &nbsp;</Link>
     <Link to="/admin/users/" className={classes.navjustify}><PersonIcon /> Users &nbsp; </Link>
-    <Link to="/admin/orders/" className={classes.navjustify}><PlaylistAddCheckIcon/> Orders &nbsp;</Link>
+    <Link to="/admin/orders/" className={classes.navjustify}><ShoppingCartIcon/> Orders &nbsp;</Link>
     </TableCell>
   </TableRow>
 </Table>
