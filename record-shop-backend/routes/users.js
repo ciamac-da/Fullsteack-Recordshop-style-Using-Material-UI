@@ -1,4 +1,5 @@
 const express = require("express");
+const {userValidationRules} = require('../lib/validation/user')
 const router = express.Router();
 const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
@@ -15,7 +16,7 @@ const {
 router
   .route("/")
   .get(getUsers)
-  .post(addUser);
+  .post(userValidationRules,addUser);
 
 router
   .route("/:id")

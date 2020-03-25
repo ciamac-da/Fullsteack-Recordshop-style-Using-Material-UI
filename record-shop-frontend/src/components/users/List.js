@@ -141,7 +141,7 @@ function List() {
         </TableCell>
     </TableRow>
 
-    <TableRow>
+    {/* <TableRow>
         <TableCell  align="center" className={classes.textColor}>Password &nbsp;
         <Fab
           className={classes.FabColor}
@@ -152,7 +152,7 @@ function List() {
         {user.password}
         </Fab>
         </TableCell>
-    </TableRow>
+    </TableRow> */}
     
     <TableRow className={classes.none}>
                 <TableCell> <h5 className={classes.none}>HÄ:D</h5> </TableCell>

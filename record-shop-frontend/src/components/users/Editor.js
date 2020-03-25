@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
-
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles(theme => ({
   table: {
@@ -23,8 +23,14 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     '& > *': {
       margin: theme.spacing(1),
-
+     
     },
+  },
+  fied:{
+    '& label.Mui-focused': {
+      color: 'green',
+    },
+    width:"25ch",
   },
   saveButton: {
     margin: theme.spacing(2),
@@ -127,24 +133,34 @@ function Editor({ match }) {
                     value={daten.firstName}
                     onChange={change}
                     variant="extended"
-                    type="submit"
+                    type="input"
                   >{daten.firstName}
                   </Fab>
                 </TableCell>
               </TableRow>
 
-              <TableRow>
-                <TableCell align="center" className={classes.textColor}>Last Name &nbsp;
-      <Fab
-                    name="lastName"
-                    className={classes.FabColor}
-                    variant="extended"
-                    type="submit"
-                    value={daten.lastName}
-                    onChange={change}
-                  >{daten.lastName}
-                  </Fab>
+
+
+
+              <TableRow >
+                <TableCell 
+                style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center"}}
+                align="center" className={classes.textColor}>Last Name &nbsp;
+      
+                <form className={classes.field} noValidate autoComplete="off">
+                
+                    <TextField 
+                     variant="filled" 
+                     value={daten.lastName}
+                     id="filled-size-normal"
+                     name="lastName"
+                     onChange={change}
+                     />
+                
+                </form>
                 </TableCell>
+      
+                  
               </TableRow>
 
               <TableRow>
@@ -153,7 +169,7 @@ function Editor({ match }) {
                     name="email"
                     className={classes.FabColor}
                     variant="extended"
-                    type="submit"
+                    type="email"
                     value={daten.email}
                     onChange={change}
                   >{daten.email}
@@ -161,7 +177,7 @@ function Editor({ match }) {
                 </TableCell>
               </TableRow>
 
-              <TableRow>
+              {/* <TableRow>
                 <TableCell align="center" className={classes.textColor}>Password &nbsp;
       <Fab
                     name="password"
@@ -173,7 +189,7 @@ function Editor({ match }) {
                   >{daten.password}
                   </Fab>
                 </TableCell>
-              </TableRow>
+              </TableRow> */}
 
             </TableHead>
 
