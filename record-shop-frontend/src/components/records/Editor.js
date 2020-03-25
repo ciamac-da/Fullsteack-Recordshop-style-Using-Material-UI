@@ -12,6 +12,8 @@ import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
+import TextField from '@material-ui/core/TextField';
+import { FilledInput } from '@material-ui/core';
 /*
   Die Editor Komponente soll einen Benutzer
   vollständig bearbeiten können.
@@ -26,7 +28,7 @@ import Fab from '@material-ui/core/Fab';
 const useStyles = makeStyles(theme => ({
   table: {
     minWidth: 650,
-    backgroundColor: "#ff6f00",
+    backgroundColor: "#b65a3b",
   },
   root: {
     display: 'flex',
@@ -34,6 +36,23 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(1),
 
     },
+  },
+  field:{
+    '& label.Mui-focused': {
+      color: 'green',
+    },
+    width:"25ch",
+  },
+
+  textColor: {
+    color: "#ffffff",
+    fontWeight: "bold",
+    fontSize: "20px",
+    fontFamily: "'Ubuntu', sans-serif",
+    display:"flex", 
+    flexDirection:"row", 
+    justifyContent:"center", 
+    alignItems:"center"
   },
   saveButton: {
     margin: theme.spacing(2),
@@ -49,12 +68,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "'Ubuntu', sans-serif",
 
   },
-  textColor: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: "20px",
-    fontFamily: "'Ubuntu', sans-serif",
-  },
+  
   FabColor: {
     color: "#ff6f00",
     fontWeight: "bold"
@@ -115,66 +129,95 @@ function Editor({ match }) {
     
     <div>
     <Reveal>
-
       <TableContainer component={Paper}>
         <Table className={classes.table} size="small" aria-label="a dense table" >
           <TableHead>
 
 <TableRow>
   <TableCell align="center" className={classes.textColor}> Year &nbsp;
-      <Fab 
-      name="year" 
-      className={classes.FabColor}
-      variant="extended"
-      type="submit"
-      value={daten.year} 
-      onChange={change}
-      >{daten.year} 
-      </Fab>
+      
+  <form className={classes.field} noValidate autoComplete="off">
+                
+                <FilledInput
+                 variant="filled" 
+                 value={daten.year}
+                 id="filled-size-normal"
+                 name="year"
+                 onChange={change}
+                 spellCheck="false"
+                 readOnly
+                 />
+            
+            </form>
+
   </TableCell>
 </TableRow>
 
-<TableRow>
-<TableCell align="center" className={classes.textColor}> Title &nbsp;
-      <Fab 
-      name="title" 
-      className={classes.FabColor}
-      variant="extended"
-      type="submit"
-      value={daten.title} 
-      onChange={change} 
-      >{daten.title} 
-      </Fab>
-</TableCell>
-</TableRow>
+<TableRow >
+                <TableCell 
+                align="center" className={classes.textColor}>Title &nbsp;
+      
+                <form className={classes.field} noValidate autoComplete="off">
+                
+                    <FilledInput 
+                     variant="filled" 
+                     value={daten.title}
+                     id="filled-size-normal"
+                     name="title"
+                     onChange={change}
+                     spellCheck="false"
+                     readOnly
+                     />
+                
+                </form>
+                </TableCell>
+      
+                  
+              </TableRow>
+    
+              <TableRow >
+                <TableCell 
+                align="center" className={classes.textColor}>Artist 
+      
+                <form className={classes.field} noValidate autoComplete="off">
+                
+                    <FilledInput 
+                     variant="filled" 
+                     value={daten.artist}
+                     id="filled-size-normal"
+                     name="artist"
+                     onChange={change}
+                     spellCheck="false"
+                     readOnly
+                     />
+                
+                </form>
+                </TableCell>
+      
+                  
+              </TableRow>
 
-<TableRow>
-<TableCell align="center" className={classes.textColor}> Artist &nbsp;
-      <Fab 
-      name="artist" 
-      className={classes.FabColor}
-      variant="extended"
-      type="submit"
-      value={daten.artist} 
-      onChange={change}
-      >{daten.artist} 
-      </Fab>
-</TableCell>
-</TableRow>
+              <TableRow >
+                <TableCell 
+                align="center" className={classes.textColor}>Price &nbsp;
+      
+                <form className={classes.field} noValidate autoComplete="off">
+                
+                    <TextField 
+                     variant="filled" 
+                     value={daten.price +"$"}
+                     id="filled-size-normal"
+                     name="price"
+                     onChange={change}
+                     spellCheck="false"
+                     />
+                </form>
+                
+                </TableCell>
+      
+                  
+              </TableRow>
 
-<TableRow>
-<TableCell align="center" className={classes.textColor}> Price &nbsp;
-      <Fab 
-    name="price" 
-    className={classes.FabColor}
-      variant="extended"
-      type="submit"
-    value={daten.price} 
-    onChange={change} 
-    >{daten.price} $
-    </Fab>
-</TableCell>
-</TableRow>
      
 </TableHead>      
       <TableBody>

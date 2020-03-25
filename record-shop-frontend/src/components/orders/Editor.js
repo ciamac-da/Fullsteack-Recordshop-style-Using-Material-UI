@@ -12,7 +12,8 @@ import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
-
+import TextField from '@material-ui/core/TextField';
+import { FilledInput } from '@material-ui/core';
 /*
   Die Editor Komponente soll einen Benutzer
   vollständig bearbeiten können.
@@ -26,7 +27,7 @@ import Fab from '@material-ui/core/Fab';
 const useStyles = makeStyles(theme => ({
   table: {
     minWidth: 650,
-    backgroundColor: "#ff6f00",
+    backgroundColor: "#b65a3b",
   },
   root: {
     display: 'flex',
@@ -34,6 +35,12 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(1),
 
     },
+  },
+  field:{
+    '& label.Mui-focused': {
+      color: 'green',
+    },
+    width:"25ch",
   },
   saveButton: {
     margin: theme.spacing(2),
@@ -54,6 +61,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     fontSize: "20px",
     fontFamily: "'Ubuntu', sans-serif",
+    display:"flex", 
+    flexDirection:"row", 
+    justifyContent:"center", 
+    alignItems:"center"
   },
   FabColor: {
     color: "#ff6f00",
@@ -123,31 +134,46 @@ function Editor({ match }) {
 
               <TableRow>
                 <TableCell align="center" className={classes.textColor}>Quantity &nbsp;
-      <Fab
-                    className={classes.FabColor}
-                    name="quantity"
-                    variant="extended"
-                    value={daten.quantity}
-                    onChange={change}
-                    type="submit">
-                    {daten.quantity}
-                  </Fab>
+               
+                <form className={classes.field} noValidate autoComplete="off">
+                
+                <TextField 
+                 variant="filled" 
+                 value={daten.quantity}
+                 id="filled-size-normal"
+                 name="Quantity"
+                 onChange={change}
+                 spellCheck="false"
+
+                 />
+            
+            </form>
                 </TableCell>
               </TableRow>
 
+            
+            
               <TableRow>
 
                 <TableCell
                   align="center" className={classes.textColor}>Record ID&nbsp;
-      <Fab
-                    className={classes.FabColor}
-                    name="record"
-                    variant="extended"
-                    value={daten.record}
-                    onChange={change}
-                    type="submit">
-                    {daten.record}
-                  </Fab>
+      
+                
+      <form className={classes.field} noValidate autoComplete="off">
+                
+                <FilledInput 
+                 variant="filled" 
+                 value={daten.record}
+                 id="filled-size-normal"
+                 name="recordId"
+                 //onChange={change}
+                 spellCheck="false"
+
+                 readOnly
+                 />
+            
+            </form>
+      
                 </TableCell>
 
               </TableRow>

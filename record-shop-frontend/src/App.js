@@ -24,16 +24,29 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   navBack:{
-    backgroundColor:"gray"
+    backgroundColor:"#696969"
   },
   navjustify:{
-    color:"#ff6f00" ,
+    color:"	#D3D3D3" ,
     textDecoration:"none", 
     fontFamily: "'Ubuntu', sans-serif", 
     fontSize:"30px",
     fontWeight:"bold",
     textShadow:"3px 3px 3px  black"
   },
+  records:{
+      color:"red",
+      filter: "drop-shadow(0  0.3rem black)",
+  },
+   user:{
+      color:"blue",
+      filter: "drop-shadow(0  0.3rem black)",
+  },
+  shop:{
+    color:"green",
+    filter: "drop-shadow(0  0.3rem black)",
+  }
+  
  
   
 }));
@@ -47,9 +60,9 @@ function App() {
 <Table>
   <TableRow>
     <TableCell align="center" >
-    <Link to="/admin/records/" className={classes.navjustify}> <AlbumIcon/>  Records &nbsp;</Link>
-    <Link to="/admin/users/" className={classes.navjustify}><PersonIcon /> Users &nbsp; </Link>
-    <Link to="/admin/orders/" className={classes.navjustify}><ShoppingCartIcon/> Orders &nbsp;</Link>
+    <Link to="/admin/records/" className={classes.navjustify}> <AlbumIcon className={classes.records}/>  Records &nbsp;</Link>
+    <Link to="/admin/users/" className={classes.navjustify}><PersonIcon className={classes.user} /> Users &nbsp; </Link>
+    <Link to="/admin/orders/" className={classes.navjustify}><ShoppingCartIcon className={classes.shop} /> Orders &nbsp;</Link>
     </TableCell>
   </TableRow>
 </Table>

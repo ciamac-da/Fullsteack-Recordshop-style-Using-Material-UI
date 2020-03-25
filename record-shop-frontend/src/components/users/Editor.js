@@ -13,11 +13,12 @@ import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
 import TextField from '@material-ui/core/TextField';
+import { FilledInput } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   table: {
     minWidth: 650,
-    backgroundColor: "#ff6f00",
+    backgroundColor: "#b65a3b",
   },
   root: {
     display: 'flex',
@@ -26,7 +27,7 @@ const useStyles = makeStyles(theme => ({
      
     },
   },
-  fied:{
+  field:{
     '& label.Mui-focused': {
       color: 'green',
     },
@@ -51,6 +52,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     fontSize: "20px",
     fontFamily: "'Ubuntu', sans-serif",
+    display:"flex", 
+    flexDirection:"row", 
+    justifyContent:"center", 
+    alignItems:"center"
   },
   FabColor: {
     color: "#ff6f00",
@@ -127,25 +132,30 @@ function Editor({ match }) {
             <TableHead>
 
               <TableRow>
-                <TableCell align="center" className={classes.textColor}>First Name &nbsp;
-      <Fab name="firstName"
-                    className={classes.FabColor}
-                    value={daten.firstName}
-                    onChange={change}
-                    variant="extended"
-                    type="input"
-                  >{daten.firstName}
-                  </Fab>
+                <TableCell align="center" className={classes.textColor}>First Name &nbsp; &nbsp; &nbsp;
+      
+                <form className={classes.field} noValidate autoComplete="off">
+                
+                    <TextField 
+                     variant="filled" 
+                     value={daten.firstName}
+                     id="filled-size-normal"
+                     name="firstName"
+                     onChange={change}
+                     spellCheck="false"
+
+                     />
+                
+                </form>
+     
                 </TableCell>
               </TableRow>
 
 
 
-
               <TableRow >
                 <TableCell 
-                style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center"}}
-                align="center" className={classes.textColor}>Last Name &nbsp;
+                align="center" className={classes.textColor}>Last Name &nbsp; &nbsp; &nbsp;
       
                 <form className={classes.field} noValidate autoComplete="off">
                 
@@ -155,6 +165,7 @@ function Editor({ match }) {
                      id="filled-size-normal"
                      name="lastName"
                      onChange={change}
+                     spellCheck="false"
                      />
                 
                 </form>
@@ -162,18 +173,24 @@ function Editor({ match }) {
       
                   
               </TableRow>
-
+              
               <TableRow>
-                <TableCell align="center" className={classes.textColor}>E-Mail Address &nbsp;
-      <Fab
-                    name="email"
-                    className={classes.FabColor}
-                    variant="extended"
-                    type="email"
-                    value={daten.email}
-                    onChange={change}
-                  >{daten.email}
-                  </Fab>
+                <TableCell align="center" className={classes.textColor}>E-Mail Address
+                
+                <form className={classes.field} noValidate autoComplete="off">
+                
+                <FilledInput 
+                  variant="filled" 
+                 value={daten.email}
+                 id="filled-size-normal"
+                 name="email"
+                //  onChange={change}
+                readOnly
+                 />
+            
+            </form>
+
+    
                 </TableCell>
               </TableRow>
 
