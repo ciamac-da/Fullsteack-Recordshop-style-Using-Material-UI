@@ -113,7 +113,7 @@ function List() {
       </TableCell>
     </TableRow>
     <TableRow className={classes.none}>
-                <TableCell> <h5 className={classes.none}>HÄ:D</h5> </TableCell>
+                <TableCell> <h5 className={classes.none}>&nbsp;</h5> </TableCell>
               </TableRow>
 
       </TableBody>

@@ -140,7 +140,7 @@ function List() {
                     variant="extended"
                     
         >
-        {record.price}
+        {record.price} $
         </Fab>
         </TableCell>
     </TableRow>
