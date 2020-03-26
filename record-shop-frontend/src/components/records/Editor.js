@@ -11,7 +11,6 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
-import Fab from '@material-ui/core/Fab';
 import TextField from '@material-ui/core/TextField';
 import { FilledInput } from '@material-ui/core';
 /*
@@ -24,7 +23,6 @@ import { FilledInput } from '@material-ui/core';
     - Drückte der Admin speichern, sollen die daten
       zum Backend geschickt werden
 */
-
 const useStyles = makeStyles(theme => ({
   table: {
     minWidth: 650,
@@ -37,30 +35,27 @@ const useStyles = makeStyles(theme => ({
 
     },
   },
-  field:{
+  field: {
     '& label.Mui-focused': {
       color: 'green',
     },
-    width:"25ch",
+    width: "25ch",
   },
-
   textColor: {
     color: "#ffffff",
     fontWeight: "bold",
     fontSize: "20px",
     fontFamily: "'Ubuntu', sans-serif",
-    display:"flex", 
-    flexDirection:"row", 
-    justifyContent:"center", 
-    alignItems:"center"
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   },
   saveButton: {
     margin: theme.spacing(2),
     backgroundColor: "#ffffff",
     color: "green",
     fontFamily: "'Ubuntu', sans-serif",
-
-
   },
   deleteButton: {
     margin: theme.spacing(2),
@@ -68,7 +63,6 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "'Ubuntu', sans-serif",
 
   },
-
 }));
 function Editor({ match }) {
   const classes = useStyles()
@@ -123,85 +117,85 @@ function Editor({ match }) {
   // Ganz einfaches JSX um es so klar wie möglich zu halten.
   return (
     <div>
-    <Reveal>
-      <TableContainer component={Paper}>
-        <Table className={classes.table} size="small" aria-label="a dense table" >
-          <TableHead>
+      <Reveal>
+        <TableContainer component={Paper}>
+          <Table className={classes.table} size="small" aria-label="a dense table" >
+            <TableHead>
 
 
-<TableRow>
-  <TableCell align="center" className={classes.textColor}> Year &nbsp;
-  <form className={classes.field} noValidate autoComplete="off">  
-                <FilledInput
-                 variant="filled" 
-                 value={daten.year}
-                 id="filled-size-normal"
-                 name="year"
-                 onChange={change}
-                 spellCheck="false"
-                 readOnly
-                 />
-            </form>
-  </TableCell>
-</TableRow>
-
-
-<TableRow >
-                <TableCell 
-                align="center" className={classes.textColor}>Title &nbsp;
-                <form className={classes.field} noValidate autoComplete="off">
-                    <FilledInput 
-                     variant="filled" 
-                     value={daten.title}
-                     id="filled-size-normal"
-                     name="title"
-                     onChange={change}
-                     spellCheck="false"
-                     readOnly
-                     />
-                </form>
-                </TableCell> 
-              </TableRow>
-    
-
-              <TableRow >
-                <TableCell 
-                align="center" className={classes.textColor}>Artist 
-                <form className={classes.field} noValidate autoComplete="off">
-                    <FilledInput 
-                     variant="filled" 
-                     value={daten.artist}
-                     id="filled-size-normal"
-                     name="artist"
-                     onChange={change}
-                     spellCheck="false"
-                     readOnly
-                     />
-                </form>
-                </TableCell>   
+              <TableRow>
+                <TableCell align="center" className={classes.textColor}> Year &nbsp;
+                    <form className={classes.field} noValidate autoComplete="off">
+                    <FilledInput
+                      variant="filled"
+                      value={daten.year}
+                      id="filled-size-normal"
+                      name="year"
+                      onChange={change}
+                      spellCheck="false"
+                      readOnly
+                    />
+                  </form>
+                </TableCell>
               </TableRow>
 
 
               <TableRow >
-                <TableCell 
-                align="center" className={classes.textColor}>Price &nbsp;
+                <TableCell
+                  align="center" className={classes.textColor}>Title &nbsp;
                 <form className={classes.field} noValidate autoComplete="off">
-                    <TextField 
-                     variant="filled" 
-                     value={daten.price +"$"}
-                     id="filled-size-normal"
-                     name="price"
-                     onChange={change}
-                     spellCheck="false"
-                     />
-                </form>
-                </TableCell>                  
+                    <FilledInput
+                      variant="filled"
+                      value={daten.title}
+                      id="filled-size-normal"
+                      name="title"
+                      onChange={change}
+                      spellCheck="false"
+                      readOnly
+                    />
+                  </form>
+                </TableCell>
               </TableRow>
 
-</TableHead>      
-      
-      
-      <TableBody>
+
+              <TableRow >
+                <TableCell
+                  align="center" className={classes.textColor}>Artist
+                <form className={classes.field} noValidate autoComplete="off">
+                    <FilledInput
+                      variant="filled"
+                      value={daten.artist}
+                      id="filled-size-normal"
+                      name="artist"
+                      onChange={change}
+                      spellCheck="false"
+                      readOnly
+                    />
+                  </form>
+                </TableCell>
+              </TableRow>
+
+
+              <TableRow >
+                <TableCell
+                  align="center" className={classes.textColor}>Price &nbsp;
+                <form className={classes.field} noValidate autoComplete="off">
+                    <TextField
+                      variant="filled"
+                      value={daten.price + "$"}
+                      id="filled-size-normal"
+                      name="price"
+                      onChange={change}
+                      spellCheck="false"
+                    />
+                  </form>
+                </TableCell>
+              </TableRow>
+
+            </TableHead>
+
+
+            <TableBody>
 
               <TableRow>
                 <TableCell align="center">
@@ -222,8 +216,8 @@ function Editor({ match }) {
 
                 </TableCell>
               </TableRow>
-              </TableBody>
-              </Table>
+            </TableBody>
+          </Table>
         </TableContainer>
       </Reveal>
     </div>

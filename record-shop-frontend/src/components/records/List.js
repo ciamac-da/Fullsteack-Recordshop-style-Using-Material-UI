@@ -67,7 +67,7 @@ function List() {
             {daten ? (
               daten.map(record => (
 
-                <TableBody>
+                <TableBody> 
                   <TableRow>
                     <TableCell align="center" className={classes.textColor}>Record Details&nbsp;
                       <Link
