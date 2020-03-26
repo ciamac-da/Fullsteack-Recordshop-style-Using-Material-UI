@@ -11,7 +11,6 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
-import Fab from '@material-ui/core/Fab';
 import TextField from '@material-ui/core/TextField';
 import { FilledInput } from '@material-ui/core'
 
@@ -24,38 +23,34 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     '& > *': {
       margin: theme.spacing(1),
-     
     },
   },
-  field:{
+  field: {
     '& label.Mui-focused': {
       color: 'green',
     },
-    width:"25ch",
+    width: "25ch",
   },
   saveButton: {
     margin: theme.spacing(2),
     backgroundColor: "#ffffff",
     color: "green",
     fontFamily: "'Ubuntu', sans-serif",
-
-
   },
   deleteButton: {
     margin: theme.spacing(2),
     backgroundColor: "#ffffff",
     fontFamily: "'Ubuntu', sans-serif",
-
   },
   textColor: {
     color: "#ffffff",
     fontWeight: "bold",
     fontSize: "20px",
     fontFamily: "'Ubuntu', sans-serif",
-    display:"flex", 
-    flexDirection:"row", 
-    justifyContent:"center", 
-    alignItems:"center"
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   },
   FabColor: {
     color: "#ff6f00",
@@ -133,95 +128,65 @@ function Editor({ match }) {
 
               <TableRow>
                 <TableCell align="center" className={classes.textColor}>First Name &nbsp; &nbsp; &nbsp;
-      
                 <form className={classes.field} noValidate autoComplete="off">
-                
-                    <TextField 
-                     variant="filled" 
-                     value={daten.firstName}
-                     id="filled-size-normal"
-                     name="firstName"
-                     onChange={change}
-                     spellCheck="false"
-
-                     />
-                
-                </form>
-     
+                    <TextField
+                      variant="filled"
+                      value={daten.firstName}
+                      id="filled-size-normal"
+                      name="firstName"
+                      onChange={change}
+                      spellCheck="false"
+                    />
+                  </form>
                 </TableCell>
               </TableRow>
-
 
 
               <TableRow >
-                <TableCell 
-                align="center" className={classes.textColor}>Last Name &nbsp; &nbsp; &nbsp;
-      
+                <TableCell
+                  align="center" className={classes.textColor}>Last Name &nbsp; &nbsp; &nbsp;
                 <form className={classes.field} noValidate autoComplete="off">
-                
-                    <TextField 
-                     variant="filled" 
-                     value={daten.lastName}
-                     id="filled-size-normal"
-                     name="lastName"
-                     onChange={change}
-                     spellCheck="false"
-                     />
-                
-                </form>
+                    <TextField
+                      variant="filled"
+                      value={daten.lastName}
+                      id="filled-size-normal"
+                      name="lastName"
+                      onChange={change}
+                      spellCheck="false"
+                    />
+                  </form>
                 </TableCell>
-      
-                  
               </TableRow>
-              
+
+
               <TableRow>
                 <TableCell align="center" className={classes.textColor}>E-Mail Address
-                
                 <form className={classes.field} noValidate autoComplete="off">
-                
-                <FilledInput 
-                  variant="filled" 
-                 value={daten.email}
-                 id="filled-size-normal"
-                 name="email"
-                //  onChange={change}
-                readOnly
-                 />
-            
-            </form>
-
-    
+                    <FilledInput
+                      variant="filled"
+                      value={daten.email}
+                      id="filled-size-normal"
+                      name="email"
+                      readOnly
+                    />
+                  </form>
                 </TableCell>
               </TableRow>
 
-              {/* <TableRow>
-                <TableCell align="center" className={classes.textColor}>Password &nbsp;
-      <Fab
-                    name="password"
-                    className={classes.FabColor}
-                    variant="extended"
-                    type="submit"
-                    value={daten.password}
-                    onChange={change}
-                  >{daten.password}
-                  </Fab>
-                </TableCell>
-              </TableRow> */}
 
             </TableHead>
 
-            
             <TableBody>
+
+
               <TableRow>
                 <TableCell align="center">
-
                   <Button
                     onClick={submit}
                     variant="contained"
                     className={classes.saveButton}
                     startIcon={<SaveIcon />}
                   >Save</Button>
-
                   <Button
                     onClick={remove}
                     vatiant="contained"
@@ -230,11 +195,10 @@ function Editor({ match }) {
                     startIcon={<DeleteIcon />}
                   >Delete
                  </Button>
-
                 </TableCell>
               </TableRow>
-              </TableBody>
-          
+            </TableBody>
+
           </Table>
         </TableContainer>
       </Reveal>

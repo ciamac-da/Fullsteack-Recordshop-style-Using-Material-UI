@@ -68,11 +68,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "'Ubuntu', sans-serif",
 
   },
-  
-  FabColor: {
-    color: "#ff6f00",
-    fontWeight: "bold"
-  }
+
 }));
 function Editor({ match }) {
   const classes = useStyles()
@@ -126,18 +122,16 @@ function Editor({ match }) {
   }
   // Ganz einfaches JSX um es so klar wie möglich zu halten.
   return (
-    
     <div>
     <Reveal>
       <TableContainer component={Paper}>
         <Table className={classes.table} size="small" aria-label="a dense table" >
           <TableHead>
 
+
 <TableRow>
   <TableCell align="center" className={classes.textColor}> Year &nbsp;
-      
-  <form className={classes.field} noValidate autoComplete="off">
-                
+  <form className={classes.field} noValidate autoComplete="off">  
                 <FilledInput
                  variant="filled" 
                  value={daten.year}
@@ -147,18 +141,15 @@ function Editor({ match }) {
                  spellCheck="false"
                  readOnly
                  />
-            
             </form>
-
   </TableCell>
 </TableRow>
+
 
 <TableRow >
                 <TableCell 
                 align="center" className={classes.textColor}>Title &nbsp;
-      
                 <form className={classes.field} noValidate autoComplete="off">
-                
                     <FilledInput 
                      variant="filled" 
                      value={daten.title}
@@ -168,19 +159,15 @@ function Editor({ match }) {
                      spellCheck="false"
                      readOnly
                      />
-                
                 </form>
-                </TableCell>
-      
-                  
+                </TableCell> 
               </TableRow>
     
+
               <TableRow >
                 <TableCell 
                 align="center" className={classes.textColor}>Artist 
-      
                 <form className={classes.field} noValidate autoComplete="off">
-                
                     <FilledInput 
                      variant="filled" 
                      value={daten.artist}
@@ -190,19 +177,15 @@ function Editor({ match }) {
                      spellCheck="false"
                      readOnly
                      />
-                
                 </form>
-                </TableCell>
-      
-                  
+                </TableCell>   
               </TableRow>
+
 
               <TableRow >
                 <TableCell 
                 align="center" className={classes.textColor}>Price &nbsp;
-      
                 <form className={classes.field} noValidate autoComplete="off">
-                
                     <TextField 
                      variant="filled" 
                      value={daten.price +"$"}
@@ -212,25 +195,22 @@ function Editor({ match }) {
                      spellCheck="false"
                      />
                 </form>
-                
-                </TableCell>
-      
-                  
+                </TableCell>                  
               </TableRow>
 
-     
 </TableHead>      
+      
+      
       <TableBody>
+
               <TableRow>
                 <TableCell align="center">
-
                   <Button
                     onClick={submit}
                     variant="contained"
                     className={classes.saveButton}
                     startIcon={<SaveIcon />}
                   >Save</Button>
-
                   <Button
                     onClick={remove}
                     vatiant="contained"
