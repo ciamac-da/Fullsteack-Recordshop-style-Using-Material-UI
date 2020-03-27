@@ -2,47 +2,51 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Reveal from 'react-reveal/Reveal';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Fab from '@material-ui/core/Fab';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import userImg from '../../img/users.jpg';
+
 
 const useStyles = makeStyles(theme => ({
-  table: {
-    minWidth: 650,
-    backgroundColor: "#b65a3b",
-  },
+  
   root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
+    maxWidth: 340,
+    minWidth:340,
+    backgroundColor:"#b65a3b",
+    margin:"25px",
+    wordBreak:"no-break",
+    display:"inline-table"
+  
+
   },
-  none: {
-    backgroundColor: "#696969"
-  },
-  textColor: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: "20px",
-    fontFamily: "'Ubuntu', sans-serif",
-  },
-  FabColor: {
-    color: "black",
-    fontFamily: "'Ubuntu', sans-serif",
-    fontWeight: "bold"
+  media: {
+    height: 140,
   },
   FabMainColor: {
     color: "black",
     fontWeight: "bold",
     fontFamily: "'Ubuntu', sans-serif",
-    textDecoration: "none"
+    textDecoration: "none"},
+  Typo:{
+    fontSize:"20px" ,   
+    fontWeight: "bold",
+    fontSize: "20px",
+    fontFamily: "'Ubuntu', sans-serif",
+    color:"#ffffff",
+    textShadow:"3px 3px 3px  black",
+  },
+  DivStyle:{
+    display:"flex",
+    flexWrap:"wrap",
+    justifyContent:"space-around",
+    backgroundColor:"silver",
   }
 }));
+
 function List() {
   const classes = useStyles()
   const [abgerufen, setAbgerufen] = React.useState(false);
@@ -55,18 +59,19 @@ function List() {
         setDaten(users);
       })
   return (
-    <div>
-      <Reveal>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} size="small" aria-label="a dense table" >
-            <TableHead>
-            </TableHead>
+    <div className={classes.DivStyle}>
             {daten ? (
               daten.map(user => (
-                <TableBody>
-
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>User Details&nbsp;
+          <Reveal>
+          <Card className={classes.root}>
+                
+                <CardActionArea>
+               <CardMedia
+          className={classes.media}
+          image={userImg}
+        />
+        <CardContent align="center"
+        >
                       <Link
                         to={`/admin/users/${user.id}`}
                         className={classes.FabMainColor}
@@ -76,75 +81,62 @@ function List() {
                           name="user ID"
                           variant="extended"
                          >
-                          Click here to see more details
+                          Click here to Modify
                         </Fab>
                       </Link>
-                    </TableCell>
-                  </TableRow>
+                     
+                      <Typography 
+                      variant="body2" 
+                      title={user.firstName}
+                      color="textSecondary" 
+                      component="p"
+                      className={classes.Typo}
+                      >
+                      First Name :&nbsp;{user.firstName}
+                     </Typography>
+
+                     <Typography 
+                      variant="body2" 
+                      title={user.lastName}
+                      color="textSecondary" 
+                      component="p"
+                      className={classes.Typo}
+                      >
+                      Last Name :&nbsp;{user.lastName}
+                     </Typography>
+
+                     <Typography 
+                      variant="body2" 
+                      title={user.fullName}
+                      color="textSecondary" 
+                      component="p"
+                      className={classes.Typo}
+                      >
+                      Full Name :&nbsp;{user.fullName}
+                     </Typography>
 
 
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>First Name &nbsp;
-                      <Fab
-                        className={classes.FabColor}
-                        name="First Name"
-                        variant="extended"
-                       >
-                        {user.firstName}
-                      </Fab>
-                    </TableCell>
-                  </TableRow>
+
+                     <Typography 
+                      variant="body2" 
+                      title={user.email}
+                      color="textSecondary" 
+                      component="p"
+                      className={classes.Typo}
+                      >
+                      {user.email}
+                     </Typography>
 
 
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>Last Name &nbsp;
-                      <Fab
-                        className={classes.FabColor}
-                        name="Last Name"
-                        variant="extended"
-                       >
-                        {user.lastName}
-                      </Fab>
-                    </TableCell>
-                  </TableRow>
 
+                  </CardContent>
+      </CardActionArea>
 
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>Full Name &nbsp;
-                      <Fab
-                        className={classes.FabColor}
-                        name="Full Name"
-                        variant="extended"
-                       >
-                        {user.fullName}
-                      </Fab>
-                    </TableCell>
-                  </TableRow>
-
-
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>E-Mail Address &nbsp;
-                      <Fab
-                        className={classes.FabColor}
-                        name="Full Name"
-                        variant="extended"
-                       >
-                        {user.email}
-                      </Fab>
-                    </TableCell>
-                  </TableRow>
-
-
-                  <TableRow className={classes.none}>
-                    <TableCell> <h5>&nbsp;</h5> </TableCell>
-                  </TableRow>
-
-                </TableBody>
+        </Card>
+      </Reveal>
               ))
             ) : null}
-          </Table>
-        </TableContainer>
-      </Reveal>
+       
     </div>)
 }
 

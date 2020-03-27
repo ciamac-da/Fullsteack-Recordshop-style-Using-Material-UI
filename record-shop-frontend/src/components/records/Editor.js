@@ -133,7 +133,7 @@ function Editor({ match }) {
                       name="year"
                       onChange={change}
                       spellCheck="false"
-                      readOnly
+                      //readOnly
                     />
                   </form>
                 </TableCell>
@@ -151,7 +151,7 @@ function Editor({ match }) {
                       name="title"
                       onChange={change}
                       spellCheck="false"
-                      readOnly
+                      //readOnly
                     />
                   </form>
                 </TableCell>
@@ -169,7 +169,7 @@ function Editor({ match }) {
                       name="artist"
                       onChange={change}
                       spellCheck="false"
-                      readOnly
+                     // readOnly
                     />
                   </form>
                 </TableCell>

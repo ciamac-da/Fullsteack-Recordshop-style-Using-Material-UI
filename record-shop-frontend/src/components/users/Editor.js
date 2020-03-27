@@ -162,12 +162,14 @@ function Editor({ match }) {
               <TableRow>
                 <TableCell align="center" className={classes.textColor}>E-Mail Address
                 <form className={classes.field} noValidate autoComplete="off">
-                    <FilledInput
+                    <TextField
                       variant="filled"
                       value={daten.email}
                       id="filled-size-normal"
                       name="email"
-                      readOnly
+                      spellCheck="false"
+                      onChange={change}
+                    //  readOnly
                     />
                   </form>
                 </TableCell>

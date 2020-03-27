@@ -2,48 +2,50 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Reveal from 'react-reveal/Reveal';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Fab from '@material-ui/core/Fab';
-
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import recordImg from '../../img/records.JPG';
 
 const useStyles = makeStyles(theme => ({
-  table: {
-    minWidth: 650,
-    backgroundColor: "#b65a3b",
-  },
+  
   root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
+    maxWidth: 340,
+    minWidth:340,
+    backgroundColor:"#b65a3b",
+    margin:"25px",
+    wordBreak:"no-break",
+    display:"inline-table"
+  
   },
-  none: {
-    backgroundColor: "#696969"
-  },
-  textColor: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: "20px",
-    fontFamily: "'Ubuntu', sans-serif",
-  },
-  FabColor: {
-    color: "black",
-    fontFamily: "'Ubuntu', sans-serif",
-    fontWeight: "bold"
+  media: {
+    height: 140,
   },
   FabMainColor: {
     color: "black",
     fontWeight: "bold",
     fontFamily: "'Ubuntu', sans-serif",
-    textDecoration: "none"
+    textDecoration: "none"},
+  Typo:{
+    fontSize:"20px" ,   
+    fontWeight: "bold",
+    fontSize: "20px",
+    fontFamily: "'Ubuntu', sans-serif",
+    color:"#ffffff",
+    textShadow:"3px 3px 3px  black",
+  },
+  DivStyle:{
+    display:"flex",
+    flexWrap:"wrap",
+    justifyContent:"space-around",
+    backgroundColor:"silver",
   }
 }));
+
+
 
 function List() {
   const classes = useStyles()
@@ -58,96 +60,81 @@ function List() {
         setDaten(records);
       })
   return (
-    <div>
-      <Reveal>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} size="small" aria-label="a dense table" >
-            <TableHead>
-            </TableHead>
-            {daten ? (
+    <div className={classes.DivStyle}>
+    {daten ? (
               daten.map(record => (
-
-                <TableBody> 
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>Record Details&nbsp;
-                      <Link
-                        to={`/admin/records/${record._id}`}
-                        className={classes.FabMainColor}
-                        >
+      <Reveal>
+      <Card className={classes.root} 
+      >
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image={recordImg}
+        />
+        <CardContent align="center"
+        >
+          <Link
+                      to={`/admin/records/${record._id}`}
+                      className={classes.FabMainColor}
+                      >
                         <Fab
-                          className={classes.FabMainColor}
-                          name="Record ID"
-                          variant="extended"
-                        >
-                          Click here to see more details
-                       </Fab>
-                      </Link>
-                    </TableCell>
-                  </TableRow>
-
-
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>Year &nbsp;
-                      <Fab
-                        className={classes.FabColor}
-                        name="Record Year"
-                        variant="extended"
-                       >
-                        {record.year}
-                      </Fab>
-                    </TableCell>
-                  </TableRow>
-
-
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>Title &nbsp;
-                      <Fab
-                        className={classes.FabColor}
-                        name="Record Title"
-                        variant="extended"
-                       >
-                        {record.title}
-                      </Fab>
-                    </TableCell>
-                  </TableRow>
-
-
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>Artist &nbsp;
-                      <Fab
-                        className={classes.FabColor}
-                        name="Record Artist"
+                        className={classes.FabMainColor}
+                        name="Record ID"
                         variant="extended"
                       >
-                        {record.artist}
-                      </Fab>
-                    </TableCell>
-                  </TableRow>
+                        Click here to Modify
+                     </Fab>
+                    </Link>
+
+          <Typography 
+          variant="body2" 
+          title={record.year}
+          color="textSecondary" 
+          component="p"
+          className={classes.Typo}
+          >
+           Year :&nbsp;{record.year}
+          </Typography>
+        
+          <Typography 
+          variant="body2" 
+          title={record.title}
+          color="textSecondary" 
+          component="p"
+          className={classes.Typo}
+          >
+           Title :&nbsp;{record.title}
+          </Typography>
+
+          <Typography 
+          variant="body2" 
+          title={record.artist}
+          color="textSecondary" 
+          component="p"
+          className={classes.Typo}
+          >
+           Artist :&nbsp;{record.artist}
+          </Typography>
 
 
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>Price &nbsp;
-                      <Fab
-                        className={classes.FabColor}
-                        name="Record Price"
-                        variant="extended"
-                       >
-                        {record.price} $
-                      </Fab>
-                    </TableCell>
-                  </TableRow>
+          <Typography 
+          variant="body2" 
+          title={record.price}
+          color="textSecondary" 
+          component="p"
+          className={classes.Typo}
+          >
+           Price :&nbsp;{record.price}$
+          </Typography>
 
+        </CardContent>
+      </CardActionArea>
 
-                  <TableRow className={classes.none}>
-                    <TableCell> <h5>&nbsp;</h5> </TableCell>
-                  </TableRow>
+</Card>
 
-                </TableBody>
+      </Reveal>
               ))
             ) : null}
-          </Table>
-        </TableContainer>
-      </Reveal>
     </div>)
 }
 
