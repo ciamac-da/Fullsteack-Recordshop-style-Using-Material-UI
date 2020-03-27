@@ -1,48 +1,47 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Reveal from 'react-reveal/Reveal';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Fab from '@material-ui/core/Fab';
-
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import orderImg from '../../img/orders.png';
 
 const useStyles = makeStyles(theme => ({
-  table: {
-    minWidth: 650,
-    backgroundColor: "#b65a3b"
-  },
+  
   root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
+    maxWidth: 340,
+    minWidth:340,
+    backgroundColor:"#696969",
+    margin:"25px",
+    wordBreak:"no-break",
+    display:"inline-table"
+  
   },
-  none: {
-    backgroundColor: "#696969"
-  },
-  textColor: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: "20px",
-    fontFamily: "'Ubuntu', sans-serif",
-  },
-  FabColor: {
-    color: "black",
-    fontFamily: "'Ubuntu', sans-serif",
-    fontWeight: "bold"
+  media: {
+    height: 140,
   },
   FabMainColor: {
     color: "black",
     fontWeight: "bold",
     fontFamily: "'Ubuntu', sans-serif",
-    textDecoration: "none"
+    textDecoration: "none"},
+  Typo:{
+    fontSize:"20px" ,   
+    fontWeight: "bold",
+    fontSize: "20px",
+    fontFamily: "'Ubuntu', sans-serif",
+    color:"#ffffff",
+    textShadow:"3px 3px 3px  black",
+  },
+  DivStyle:{
+    display:"flex",
+    flexWrap:"wrap",
+    justifyContent:"space-around",
+    backgroundColor:"silver",
   }
 }));
 
@@ -59,19 +58,20 @@ function List() {
         setDaten(orders);
       })
   return (
-    <div>
-      <Reveal>
-
-        <TableContainer component={Paper}>
-          <Table className={classes.table} size="small" aria-label="a dense table" >
-            <TableHead>
-            </TableHead>
+    <div className={classes.DivStyle}>
             {daten ? (
               daten.map(order => (
-                <TableBody>
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>Order Details &nbsp;
-      <Link to={`/admin/orders/${order._id}`}
+             <Reveal>
+             <Card className={classes.root} 
+              >
+          <CardActionArea>
+          <CardMedia
+          className={classes.media}
+          image={orderImg}
+           />
+          <CardContent align="center"
+           >
+          <Link to={`/admin/orders/${order._id}`}
                         className={classes.FabMainColor}
                       >
                         <Fab
@@ -79,45 +79,31 @@ function List() {
                           name="Order ID"
                           variant="extended"
                         >
-                          Click here to see more details
-        </Fab>
+                          Click here to Modify
+                      </Fab>
                       </Link>
-                    </TableCell>
-                  </TableRow>
+                    
+                      <Typography 
+                    variant="body2" 
+                    title={order.quantity}
+                    color="textSecondary" 
+                   component="p"
+                   className={classes.Typo}
+                     >
+                   Quantity :&nbsp;{order.quantity}
+                  </Typography>
 
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>Quantity &nbsp;
-        <Fab
-                        className={classes.FabColor}
-                        name="quantity"
-                        variant="extended"
-
-                      >
-                        {order.quantity}
-                      </Fab>
-                    </TableCell>
-                  </TableRow>
-
-                  <TableRow>
-                    <TableCell align="center" className={classes.textColor}>Record ID&nbsp;
-        <Fab
-                        className={classes.FabColor}
-                        name="record"
-                        variant="extended"
-                      >{order.record}
-                      </Fab>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow className={classes.none}>
-                    <TableCell> <h5>&nbsp;</h5> </TableCell>
-                  </TableRow>
-
-                </TableBody>
+              
+                 
+                  </CardContent>
+                  </CardActionArea>
+                  </Card>
+                       
+                 
+      </Reveal>
               ))
             ) : null}
-          </Table>
-        </TableContainer>
-      </Reveal>
+      
     </div>)
 }
 

@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 340,
     minWidth:340,
-    backgroundColor:"#b65a3b",
+    backgroundColor:"#42a5f5",
     margin:"25px",
     wordBreak:"no-break",
     display:"inline-table"

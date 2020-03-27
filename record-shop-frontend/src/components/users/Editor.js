@@ -129,7 +129,7 @@ function Editor({ match }) {
               <TableRow>
                 <TableCell align="center" className={classes.textColor}>First Name &nbsp; &nbsp; &nbsp;
                 <form className={classes.field} noValidate autoComplete="off">
-                    <TextField
+                    <FilledInput
                       variant="filled"
                       value={daten.firstName}
                       id="filled-size-normal"
@@ -146,7 +146,7 @@ function Editor({ match }) {
                 <TableCell
                   align="center" className={classes.textColor}>Last Name &nbsp; &nbsp; &nbsp;
                 <form className={classes.field} noValidate autoComplete="off">
-                    <TextField
+                    <FilledInput
                       variant="filled"
                       value={daten.lastName}
                       id="filled-size-normal"
@@ -162,7 +162,7 @@ function Editor({ match }) {
               <TableRow>
                 <TableCell align="center" className={classes.textColor}>E-Mail Address
                 <form className={classes.field} noValidate autoComplete="off">
-                    <TextField
+                    <FilledInput
                       variant="filled"
                       value={daten.email}
                       id="filled-size-normal"

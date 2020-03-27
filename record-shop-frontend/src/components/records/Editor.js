@@ -180,12 +180,13 @@ function Editor({ match }) {
                 <TableCell
                   align="center" className={classes.textColor}>Price &nbsp;
                 <form className={classes.field} noValidate autoComplete="off">
-                    <TextField
+                    <FilledInput
                       variant="filled"
-                      value={daten.price + "$"}
+                      value={daten.price} $
                       id="filled-size-normal"
                       name="price"
                       onChange={change}
+                      type="number"
                       spellCheck="false"
                     />
                   </form>

@@ -126,11 +126,11 @@ function Editor({ match }) {
               <TableRow>
                 <TableCell align="center" className={classes.textColor}>Quantity &nbsp;
                 <form className={classes.field} noValidate autoComplete="off">
-                    <TextField
+                    <FilledInput
                       variant="filled"
                       value={daten.quantity}
                       id="filled-size-normal"
-                      name="Quantity"
+                      name="quantity"
                       onChange={change}
                       spellCheck="false"
                     />
@@ -147,9 +147,10 @@ function Editor({ match }) {
                       variant="filled"
                       value={daten.record}
                       id="filled-size-normal"
-                      name="recordId"
+                      name="record"
                       spellCheck="false"
-                      readOnly
+                      onChange={change}
+                    //  readOnly
                     />
                   </form>
                 </TableCell>

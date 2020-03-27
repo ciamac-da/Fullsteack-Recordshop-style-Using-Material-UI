@@ -34,15 +34,15 @@ const useStyles = makeStyles(theme => ({
     textShadow:"3px 3px 3px  black"
   },
   records:{
-      color:"red",
+      color:"#42a5f5",
       filter: "drop-shadow(0  0.3rem black)",
   },
-   user:{
-      color:"blue",
+   users:{
+      color:"green",
       filter: "drop-shadow(0  0.3rem black)",
   },
-  shop:{
-    color:"green",
+  orders:{
+    color:"red",
     filter: "drop-shadow(0  0.3rem black)",
   }
   
@@ -60,8 +60,8 @@ function App() {
   <TableRow>
     <TableCell align="center" >
     <Link to="/admin/records/" className={classes.navjustify}> <AlbumIcon className={classes.records}/>  Records &nbsp;</Link>
-    <Link to="/admin/users/" className={classes.navjustify}><PersonIcon className={classes.user} /> Users &nbsp; </Link>
-    <Link to="/admin/orders/" className={classes.navjustify}><ShoppingCartIcon className={classes.shop} /> Orders &nbsp;</Link>
+    <Link to="/admin/users/" className={classes.navjustify}><PersonIcon className={classes.users} /> Users &nbsp; </Link>
+    <Link to="/admin/orders/" className={classes.navjustify}><ShoppingCartIcon className={classes.orders} /> Orders &nbsp;</Link>
     </TableCell>
   </TableRow>
 </Table>
