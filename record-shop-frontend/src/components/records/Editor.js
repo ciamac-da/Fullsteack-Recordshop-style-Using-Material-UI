@@ -67,7 +67,8 @@ const useStyles = makeStyles(theme => ({
   },
   filledStyle:{
     color:"white", 
-    fontWeight:"bold"
+    fontWeight:"bold",
+    fontFamily: "'Ubuntu', sans-serif",
   },
   saveButton: {
     margin: theme.spacing(2),
@@ -146,12 +147,15 @@ function Editor({ match }) {
           image={modifyImg}
         />
         <CardContent align="center"
+        
         >
                 <Typography
                className={classes.Typo}
+                      align="center"
                 >
                 Year&nbsp;
                     <FilledInput
+                    style={{textAlign:"center"}}
                       className={classes.filledStyle}
                       variant="filled"
                       value={daten.year}

@@ -1,35 +1,75 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Reveal from 'react-reveal/Reveal';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
-import TextField from '@material-ui/core/TextField';
-import { FilledInput } from '@material-ui/core'
+import { FilledInput, Typography } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import modifyImg from '../../img/modify.jpg';
+import CardActions from '@material-ui/core/CardActions';
 
+/*
+  Die Editor Komponente soll einen Benutzer
+  vollständig bearbeiten können.
+    - Dafür müssen wir als erstes,
+      die daten für diesen Benutzer abholen
+    - Ein Formular soll dem Admin die änderungen
+      ermöglichen
+    - Drückte der Admin speichern, sollen die daten
+      zum Backend geschickt werden
+*/
 const useStyles = makeStyles(theme => ({
-  table: {
-    minWidth: 650,
-    backgroundColor: "#b65a3b",
-  },
   root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
+    maxWidth: 340,
+    minWidth:340,
+    backgroundColor:"green",
+    margin:"25px",
+    wordBreak:"no-break",
+    display:"inline-table"
     },
-  },
+    media: {
+      height: 140,
+    },
   field: {
     '& label.Mui-focused': {
       color: 'green',
     },
     width: "25ch",
+  },
+  textColor: {
+    color: "#ffffff",
+    fontWeight: "bold",
+    fontSize: "20px",
+    fontFamily: "'Ubuntu', sans-serif",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+
+  Typo:{
+    fontSize:"20px" ,   
+    fontWeight: "bold",
+    fontSize: "20px",
+    fontFamily: "'Ubuntu', sans-serif",
+    color:"#ffffff",
+    textShadow:"3px 3px 3px  black",
+  },
+  DivStyle:{
+    display:"flex",
+    flexWrap:"wrap",
+    justifyContent:"space-around",
+    backgroundColor:"silver",
+  },
+  filledStyle:{
+    color:"white", 
+    fontWeight:"bold",
+    fontFamily: "'Ubuntu', sans-serif",
+
   },
   saveButton: {
     margin: theme.spacing(2),
@@ -42,19 +82,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#ffffff",
     fontFamily: "'Ubuntu', sans-serif",
   },
-  textColor: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: "20px",
-    fontFamily: "'Ubuntu', sans-serif",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  FabColor: {
-    color: "#ff6f00",
-    fontWeight: "bold"
+  Buttons:{
+    justifyContent:"center"
   }
 }));
 /*
@@ -120,69 +149,87 @@ function Editor({ match }) {
   }
   // Ganz einfaches JSX um es so klar wie möglich zu halten.
   return (
-    <div >
+       <div className={classes.DivStyle}>
       <Reveal>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} size="small" aria-label="a dense table" >
-            <TableHead>
-
-              <TableRow>
-                <TableCell align="center" className={classes.textColor}>First Name &nbsp; &nbsp; &nbsp;
-                <form className={classes.field} noValidate autoComplete="off">
+      <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image={modifyImg}
+        />
+        <CardContent align="center"
+        >
+                <Typography
+               className={classes.Typo}
+                >
+                First Name
                     <FilledInput
+                      className={classes.filledStyle}
                       variant="filled"
                       value={daten.firstName}
                       id="filled-size-normal"
                       name="firstName"
                       onChange={change}
                       spellCheck="false"
+                      //readOnly
                     />
-                  </form>
-                </TableCell>
-              </TableRow>
+          </Typography>
+            
 
-
-              <TableRow >
-                <TableCell
-                  align="center" className={classes.textColor}>Last Name &nbsp; &nbsp; &nbsp;
-                <form className={classes.field} noValidate autoComplete="off">
+                   <Typography
+        className={classes.Typo}
+                   > 
+                   Last Name
                     <FilledInput
+                      className={classes.filledStyle}
                       variant="filled"
                       value={daten.lastName}
                       id="filled-size-normal"
                       name="lastName"
                       onChange={change}
                       spellCheck="false"
+                      //readOnly
                     />
-                  </form>
-                </TableCell>
-              </TableRow>
+                  </Typography>
 
 
-              <TableRow>
-                <TableCell align="center" className={classes.textColor}>E-Mail Address
-                <form className={classes.field} noValidate autoComplete="off">
+                    <Typography
+                   className={classes.Typo}
+                    >
+                    Full Name
                     <FilledInput
+                      className={classes.filledStyle}
                       variant="filled"
-                      value={daten.email}
+                      value={daten.fullName}
+                      id="filled-size-normal"
+                      name="fullName"
+                      onChange={change}
+                      spellCheck="false"
+                     // readOnly
+                    />
+                  </Typography>
+
+
+                   <Typography
+                 className={classes.Typo}
+                   >
+                    E-Mail Address
+                    <FilledInput
+                      className={classes.filledStyle}
+                      variant="filled"
+                      value={daten.email} $
                       id="filled-size-normal"
                       name="email"
-                      spellCheck="false"
                       onChange={change}
-                    //  readOnly
+                      spellCheck="false"
                     />
-                  </form>
-                </TableCell>
-              </TableRow>
+                  </Typography>
 
 
-            </TableHead>
+        </CardContent>
+        </CardActionArea>
 
-            <TableBody>
-
-
-              <TableRow>
-                <TableCell align="center">
+<CardActions className={classes.Buttons} >
                   <Button
                     onClick={submit}
                     variant="contained"
@@ -197,12 +244,9 @@ function Editor({ match }) {
                     startIcon={<DeleteIcon />}
                   >Delete
                  </Button>
-                </TableCell>
-              </TableRow>
-            </TableBody>
+               </CardActions>
 
-          </Table>
-        </TableContainer>
+      </Card>
       </Reveal>
     </div>
   );
