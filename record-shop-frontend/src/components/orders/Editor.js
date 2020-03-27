@@ -1,18 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Reveal from 'react-reveal/Reveal';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
-import TextField from '@material-ui/core/TextField';
-import { FilledInput } from '@material-ui/core';
+import { FilledInput, Typography } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import modifyImg from '../../img/modify.jpg';
+import CardActions from '@material-ui/core/CardActions';
 /*
   Die Editor Komponente soll einen Benutzer
   vollständig bearbeiten können.
@@ -24,22 +22,53 @@ import { FilledInput } from '@material-ui/core';
       zum Backend geschickt werden
 */
 const useStyles = makeStyles(theme => ({
-  table: {
-    minWidth: 650,
-    backgroundColor: "#b65a3b",
-  },
   root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-
+    maxWidth: 340,
+    minWidth:340,
+    backgroundColor:"red",
+    margin:"25px",
+    wordBreak:"no-break",
+    display:"inline-table"
     },
-  },
+    media: {
+      height: 140,
+    },
   field: {
     '& label.Mui-focused': {
       color: 'green',
     },
     width: "25ch",
+  },
+  textColor: {
+    color: "#ffffff",
+    fontWeight: "bold",
+    fontSize: "20px",
+    fontFamily: "'Ubuntu', sans-serif",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+
+  Typo:{
+    fontSize:"20px" ,   
+    fontWeight: "bold",
+    fontSize: "20px",
+    fontFamily: "'Ubuntu', sans-serif",
+    color:"#ffffff",
+    textShadow:"3px 3px 3px  black",
+  },
+  DivStyle:{
+    display:"flex",
+    flexWrap:"wrap",
+    justifyContent:"space-around",
+    backgroundColor:"silver",
+  },
+  filledStyle:{
+    color:"white", 
+    fontWeight:"bold",
+    fontFamily: "'Ubuntu', sans-serif",
+
   },
   saveButton: {
     margin: theme.spacing(2),
@@ -52,16 +81,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#ffffff",
     fontFamily: "'Ubuntu', sans-serif",
   },
-  textColor: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: "20px",
-    fontFamily: "'Ubuntu', sans-serif",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
-  },
+  Buttons:{
+    justifyContent:"center"
+  }
 }));
 
 function Editor({ match }) {
@@ -117,75 +139,72 @@ function Editor({ match }) {
   }
   // Ganz einfaches JSX um es so klar wie möglich zu halten.
   return (
-    <div>
-      <Reveal>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} size="small" aria-label="a dense table" >
-            <TableHead>
+    <div className={classes.DivStyle}>
+    <Reveal>
+    <Card className={classes.root}>
+    <CardActionArea>
+      <CardMedia
+        className={classes.media}
+        image={modifyImg}
+      />
+      <CardContent align="center"
+      >
+              <Typography
+             className={classes.Typo}
+              >
+              Quantity
+                  <FilledInput
+                    className={classes.filledStyle}
+                    variant="filled"
+                    value={daten.quantity}
+                    id="filled-size-normal"
+                    name="quantity"
+                    onChange={change}
+                    spellCheck="false"
+                    //readOnly
+                  />
+        </Typography>
+          
 
-              <TableRow>
-                <TableCell align="center" className={classes.textColor}>Quantity &nbsp;
-                <form className={classes.field} noValidate autoComplete="off">
-                    <FilledInput
-                      variant="filled"
-                      value={daten.quantity}
-                      id="filled-size-normal"
-                      name="quantity"
-                      onChange={change}
-                      spellCheck="false"
-                    />
-                  </form>
-                </TableCell>
-              </TableRow>
+                 <Typography
+      className={classes.Typo}
+                 > 
+                 Record ID
+                  <FilledInput
+                    className={classes.filledStyle}
+                    variant="filled"
+                    value={daten.record}
+                    id="filled-size-normal"
+                    name="record"
+                    onChange={change}
+                    spellCheck="false"
+                    //readOnly
+                  />
+                </Typography>
 
+      </CardContent>
+      </CardActionArea>
 
-              <TableRow>
-                <TableCell
-                  align="center" className={classes.textColor}>Record ID&nbsp;
-                    <form className={classes.field} noValidate autoComplete="off">
-                    <FilledInput
-                      variant="filled"
-                      value={daten.record}
-                      id="filled-size-normal"
-                      name="record"
-                      spellCheck="false"
-                      onChange={change}
-                    //  readOnly
-                    />
-                  </form>
-                </TableCell>
-              </TableRow>
+<CardActions className={classes.Buttons} >
+                <Button
+                  onClick={submit}
+                  variant="contained"
+                  className={classes.saveButton}
+                  startIcon={<SaveIcon />}
+                >Save</Button>
+                <Button
+                  onClick={remove}
+                  vatiant="contained"
+                  color="secondary"
+                  className={classes.deleteButton}
+                  startIcon={<DeleteIcon />}
+                >Delete
+               </Button>
+             </CardActions>
 
-
-            </TableHead>
-
-            <TableBody>
-
-
-              <TableRow>
-                <TableCell align="center">
-                  <Button
-                    onClick={submit}
-                    variant="contained"
-                    className={classes.saveButton}
-                    startIcon={<SaveIcon />}
-                  >Save
-      </Button>
-                  <Button
-                    onClick={remove}
-                    vatiant="contained"
-                    color="secondary"
-                    className={classes.deleteButton}
-                    startIcon={<DeleteIcon />}
-                  >Delete</Button>
-                </TableCell>
-              </TableRow>
-
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Reveal>
-    </div>
+    </Card>
+    </Reveal>
+  </div>
   );
 }
 
