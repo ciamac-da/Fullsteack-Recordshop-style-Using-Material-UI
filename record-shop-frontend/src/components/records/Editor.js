@@ -1,18 +1,17 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Reveal from 'react-reveal/Reveal';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
-import TextField from '@material-ui/core/TextField';
-import { FilledInput } from '@material-ui/core';
+import { FilledInput, Typography } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import modifyImg from '../../img/modify.jpg';
+import CardActions from '@material-ui/core/CardActions';
+
 /*
   Die Editor Komponente soll einen Benutzer
   vollständig bearbeiten können.
@@ -24,17 +23,17 @@ import { FilledInput } from '@material-ui/core';
       zum Backend geschickt werden
 */
 const useStyles = makeStyles(theme => ({
-  table: {
-    minWidth: 650,
-    backgroundColor: "#b65a3b",
-  },
   root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-
+    maxWidth: 340,
+    minWidth:340,
+    backgroundColor:"#42a5f5",
+    margin:"25px",
+    wordBreak:"no-break",
+    display:"inline-table"
     },
-  },
+    media: {
+      height: 140,
+    },
   field: {
     '& label.Mui-focused': {
       color: 'green',
@@ -51,6 +50,25 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center"
   },
+
+  Typo:{
+    fontSize:"20px" ,   
+    fontWeight: "bold",
+    fontSize: "20px",
+    fontFamily: "'Ubuntu', sans-serif",
+    color:"#ffffff",
+    textShadow:"3px 3px 3px  black",
+  },
+  DivStyle:{
+    display:"flex",
+    flexWrap:"wrap",
+    justifyContent:"space-around",
+    backgroundColor:"silver",
+  },
+  filledStyle:{
+    color:"white", 
+    fontWeight:"bold"
+  },
   saveButton: {
     margin: theme.spacing(2),
     backgroundColor: "#ffffff",
@@ -61,8 +79,10 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2),
     backgroundColor: "#ffffff",
     fontFamily: "'Ubuntu', sans-serif",
-
   },
+  Buttons:{
+    justifyContent:"center"
+  }
 }));
 function Editor({ match }) {
   const classes = useStyles()
@@ -116,17 +136,23 @@ function Editor({ match }) {
   }
   // Ganz einfaches JSX um es so klar wie möglich zu halten.
   return (
-    <div>
+
+    <div className={classes.DivStyle}>
       <Reveal>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} size="small" aria-label="a dense table" >
-            <TableHead>
-
-
-              <TableRow>
-                <TableCell align="center" className={classes.textColor}> Year &nbsp;
-                    <form className={classes.field} noValidate autoComplete="off">
+      <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image={modifyImg}
+        />
+        <CardContent align="center"
+        >
+                <Typography
+               className={classes.Typo}
+                >
+                Year&nbsp;
                     <FilledInput
+                      className={classes.filledStyle}
                       variant="filled"
                       value={daten.year}
                       id="filled-size-normal"
@@ -135,16 +161,15 @@ function Editor({ match }) {
                       spellCheck="false"
                       //readOnly
                     />
-                  </form>
-                </TableCell>
-              </TableRow>
+          </Typography>
+            
 
-
-              <TableRow >
-                <TableCell
-                  align="center" className={classes.textColor}>Title &nbsp;
-                <form className={classes.field} noValidate autoComplete="off">
+                   <Typography
+        className={classes.Typo}
+                   > 
+                   Title&nbsp;&nbsp;
                     <FilledInput
+                      className={classes.filledStyle}
                       variant="filled"
                       value={daten.title}
                       id="filled-size-normal"
@@ -153,16 +178,15 @@ function Editor({ match }) {
                       spellCheck="false"
                       //readOnly
                     />
-                  </form>
-                </TableCell>
-              </TableRow>
+                  </Typography>
 
 
-              <TableRow >
-                <TableCell
-                  align="center" className={classes.textColor}>Artist
-                <form className={classes.field} noValidate autoComplete="off">
+                    <Typography
+                   className={classes.Typo}
+                    >
+                    Artist
                     <FilledInput
+                      className={classes.filledStyle}
                       variant="filled"
                       value={daten.artist}
                       id="filled-size-normal"
@@ -171,16 +195,15 @@ function Editor({ match }) {
                       spellCheck="false"
                      // readOnly
                     />
-                  </form>
-                </TableCell>
-              </TableRow>
+                  </Typography>
 
 
-              <TableRow >
-                <TableCell
-                  align="center" className={classes.textColor}>Price &nbsp;
-                <form className={classes.field} noValidate autoComplete="off">
+                   <Typography
+                 className={classes.Typo}
+                   >
+                    Price&nbsp;
                     <FilledInput
+                      className={classes.filledStyle}
                       variant="filled"
                       value={daten.price} $
                       id="filled-size-normal"
@@ -189,17 +212,13 @@ function Editor({ match }) {
                       type="number"
                       spellCheck="false"
                     />
-                  </form>
-                </TableCell>
-              </TableRow>
-
-            </TableHead>
+                  </Typography>
 
 
-            <TableBody>
+        </CardContent>
+        </CardActionArea>
 
-              <TableRow>
-                <TableCell align="center">
+<CardActions className={classes.Buttons} >
                   <Button
                     onClick={submit}
                     variant="contained"
@@ -214,14 +233,12 @@ function Editor({ match }) {
                     startIcon={<DeleteIcon />}
                   >Delete
                  </Button>
+               </CardActions>
 
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+      </Card>
       </Reveal>
     </div>
+
   );
 }
 
