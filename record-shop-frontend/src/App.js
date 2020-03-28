@@ -173,11 +173,15 @@ function App() {
       >
         <MenuIcon />
       </IconButton>
+      <Link to="/" style={{textDecoration:"none"}}
+    >
       <Typography variant="h4" noWrap
       className={classes.navjustify}
       >
+      
         Record Shop
       </Typography>
+      </Link>
     </Toolbar>
   </AppBar>
   <Drawer
