@@ -13,10 +13,10 @@ import recordImg from '../../img/records.JPG';
 const useStyles = makeStyles(theme => ({
   
   root: {
-    maxWidth: 340,
-    minWidth:340,
+    maxWidth: 330,
+    minWidth: 330,
     backgroundColor:"#42a5f5",
-    margin:"25px",
+    margin:"15px",
     wordBreak:"no-break",
     display:"inline-table"
   

@@ -33,7 +33,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-const drawerWidth = 240;
+const drawerWidth = 180;
 
 
 
@@ -51,8 +51,16 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "'Ubuntu', sans-serif", 
     fontSize:"30px",
     fontWeight:"bold",
-    textShadow:"3px 3px 3px  black"
+    textShadow:"3px 3px 3px  black",
   },
+DrawerText:{
+  color:"	#D3D3D3" ,
+  textDecoration:"none", 
+  fontFamily: "'Ubuntu', sans-serif", 
+  fontSize:"20px",
+  fontWeight:"bold",
+  textShadow:"3px 3px 3px  black",
+},
   records:{
       color:"#42a5f5",
       filter: "drop-shadow(0  0.3rem black)",
@@ -66,7 +74,7 @@ const useStyles = makeStyles(theme => ({
     filter: "drop-shadow(0  0.3rem black)",
   },
   list: {
-    width: 250,
+    width: 150,
   },
   fullList: {
     width: 'auto',
@@ -101,6 +109,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor:"#696969"
   },
   drawerHeader: {
     display: 'flex',
@@ -112,7 +121,7 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(0),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -126,7 +135,6 @@ const useStyles = makeStyles(theme => ({
     }),
     marginLeft: 0,
   },
-
 }));
 
 function App() {
@@ -189,17 +197,17 @@ function App() {
     </div>
     <Divider />
 
-    <List>
-        <Link to="/admin/records/" className={classes.navjustify}> <AlbumIcon className={classes.records}/>  Records &nbsp;</Link>
+    <List >
+        <Link to="/admin/records/" className={classes.DrawerText}> <AlbumIcon className={classes.records}/>  Records &nbsp;</Link>
     </List>
 
 
     <List>
-        <Link to="/admin/users/" className={classes.navjustify}><PersonIcon className={classes.users} /> Users &nbsp; </Link>
+        <Link to="/admin/users/" className={classes.DrawerText}><PersonIcon className={classes.users} /> Users &nbsp; </Link>
     </List>
 
     <List>
-       <Link to="/admin/orders/" className={classes.navjustify}><ShoppingCartIcon className={classes.orders} /> Orders &nbsp;</Link>
+       <Link to="/admin/orders/" className={classes.DrawerText}><ShoppingCartIcon className={classes.orders} /> Orders &nbsp;</Link>
     </List>
 
     <Divider />
@@ -221,9 +229,6 @@ function App() {
     </Switch>
   </main>
 </div>
-
 );
 }  
-
-
 export default App;

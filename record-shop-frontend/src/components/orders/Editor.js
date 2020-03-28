@@ -24,9 +24,8 @@ import CardActions from '@material-ui/core/CardActions';
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 340,
-    minWidth:340,
     backgroundColor:"red",
-    margin:"25px",
+    margin:"15px",
     wordBreak:"no-break",
     display:"inline-table"
     },

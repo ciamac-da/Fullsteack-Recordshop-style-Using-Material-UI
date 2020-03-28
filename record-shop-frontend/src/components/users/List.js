@@ -14,10 +14,10 @@ import userImg from '../../img/users.jpg';
 const useStyles = makeStyles(theme => ({
   
   root: {
-    maxWidth: 340,
-    minWidth:340,
+    maxWidth: 330,
+    minWidth:330,
     backgroundColor:"green",
-    margin:"25px",
+    margin:"15px",
     wordBreak:"no-break",
     display:"inline-table"
   

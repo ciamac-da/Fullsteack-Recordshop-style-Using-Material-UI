@@ -13,10 +13,9 @@ import orderImg from '../../img/orders.png';
 const useStyles = makeStyles(theme => ({
   
   root: {
-    maxWidth: 340,
-    minWidth:340,
+    maxWidth: 330,
     backgroundColor:"#696969",
-    margin:"25px",
+    margin:"15px",
     wordBreak:"no-break",
     display:"inline-table"
   
