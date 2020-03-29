@@ -8,7 +8,6 @@
     "seed": "node seed/seed_db.js",
     "purge": "node seed/purge_db.js",
     "test": "jest --runInBand"
-
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

@@ -13,6 +13,7 @@
   "author": "ciamac-da",
   "license": "GPL-3.0",
   "dependencies": {
+    "yarn":"*",
     "concurrently": "^5.1.0",
     "nodemon": "*"
   }
