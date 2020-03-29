@@ -26,6 +26,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 
+
 const drawerWidth = 180;
 
 
@@ -185,6 +186,7 @@ function App() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
   const [abgerufen, setAbgerufen] = React.useState(false);
   const [daten, setDaten] = React.useState(false);
   if (!abgerufen)
@@ -195,6 +197,7 @@ function App() {
         console.log(orders);
         setDaten(orders);
       })
+     
   return(
   <div className={classes.dis}>
   <CssBaseline />
@@ -213,6 +216,7 @@ function App() {
         onClick={handleDrawerOpen}
         edge="start"
         className={clsx(classes.menuButton, open && classes.hide)}
+        
       >
         <MenuIcon />
       </IconButton>
@@ -231,9 +235,9 @@ function App() {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
+            <InputBase 
               placeholder="Search…"
-              spellCheck="false"
+              spellCheck="false"    
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
@@ -242,7 +246,7 @@ function App() {
             />
           </div>
           ))
-            ) : <></>}
+            ) : null}
       
 
     </Toolbar>
@@ -286,12 +290,12 @@ function App() {
     <div className={classes.drawerHeader} />
    
     <Switch>
-     <Route path="/admin/orders/:id" component={OrderEditor}/>
-      <Route path="/admin/orders/"    component={OrderList}/>
       <Route path="/admin/records/:id" component={RecordEditor}/>
       <Route path="/admin/records/"    component={RecordList}/>
       <Route path="/admin/users/:id"   component={UserEditor}/>
       <Route path="/admin/users/"      component={UserList}/>
+      <Route path="/admin/orders/:id"  component={OrderEditor}/>
+      <Route path="/admin/orders/"     component={OrderList}/>
     </Switch>
   </main>
 </div>

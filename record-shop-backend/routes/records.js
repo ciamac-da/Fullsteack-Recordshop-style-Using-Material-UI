@@ -9,7 +9,8 @@ const {
   getRecord,
   updateRecord,
   deleteRecord,
-  addRecord
+  addRecord,
+  
 } = require("../controllers/recordsController");
 
 router
