@@ -51,14 +51,21 @@ function List() {
   const classes = useStyles()
   const [abgerufen, setAbgerufen] = React.useState(false);
   const [daten, setDaten] = React.useState(false);
+  const [meta, setMeta] = React.useState({
+       pageNumber: 0,
+       recordsPerPage: 4
+  });
+  
   if (!abgerufen)
-    fetch('/users/')
+    fetch(`/users/?pageNumber=${meta.pageName}&recordsPerPage=${meta.recordsPerPage}`)
       .then(response => response.json())
       .then(users => {
         setAbgerufen(true);
         setDaten(users);
       })
   return (
+
+    
     <div className={classes.DivStyle}>
             {daten ? (
               daten.map(user => (

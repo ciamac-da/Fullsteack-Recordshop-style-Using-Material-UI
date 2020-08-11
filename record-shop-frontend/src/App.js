@@ -296,6 +296,7 @@ function App() {
       <Route path="/admin/users/"      component={UserList}/>
       <Route path="/admin/orders/:id"  component={OrderEditor}/>
       <Route path="/admin/orders/"     component={OrderList}/>
+
     </Switch>
   </main>
 </div>
